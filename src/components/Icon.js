@@ -29,7 +29,7 @@ export const Icon = ({ icon, ...props }) => {
     });
   }, [icon]);
 
-  const filter = getFilters("#2AC24B")
+  const { filter } = getFilters("#2AC24B")
 
   return src ? <StyledImg src={src} alt={icon} filter={filter} {...props} /> : <StyledSkeleton {...props} />;
 };
