@@ -19,6 +19,8 @@ export const App = ({plugin}) => {
   const [data, setData] = useState(getInitialState(plugin));
   //const [data, setData] = useState();
 
+  console.log("data", data);
+
   useEffect(() => {
     const value = JSON.stringify(data);
 
