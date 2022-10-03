@@ -15,14 +15,6 @@ const getInitialState = (plugin) => {
   }
 };
 
-/*
-const options = [
-  { value: 'chocolate', label: 'Chocolate' },
-  { value: 'strawberry', label: 'Strawberry' },
-  { value: 'vanilla', label: 'Vanilla' }
-]
-*/
-
 export const App = ({plugin}) => {
   const [data, setData] = useState(getInitialState(plugin));
   //const [data, setData] = useState();
@@ -43,13 +35,17 @@ export const App = ({plugin}) => {
 
   const {options} = JSON.parse(plugin.parameters.instance.options)
 
+  const handleSelect = ({value}) => () => {
+    setData(options.find((option) => option.value === value))
+  }
+
   return (
     <ThemeProvider theme={plugin.theme}>
       <Select options={options}>
       </Select>
       {options.map((option) => {
         return (
-          <RowItem {...option} />
+          <RowItem {...option} onSelect={handleSelect(option)} />
         )
       })}
     </ThemeProvider>
