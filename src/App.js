@@ -9,7 +9,7 @@ const getInitialState = (plugin) => {
     return JSON.parse(value);
   } catch {
     console.log("failed to parse");
-    return undefined;
+    return null;
   }
 };
 
@@ -21,16 +21,10 @@ export const App = ({plugin}) => {
   console.log("hej1", plugin.getFieldValue(plugin.fieldPath));
 
   useEffect(() => {
-
-    console.log("hej2", plugin.getFieldValue(plugin.fieldPath));
-
-    const value = plugin.getFieldValue(plugin.fieldPath)
-    const stringData = JSON.stringify(data);
-
-    console.log(value, stringData, data);
+    const value = JSON.stringify(data);
 
     // The value is the same as before, do nothing
-    if (value === stringData || value === data) return;
+    if (value === JSON.stringify(getInitialState(plugin))) return;
     console.log("Do we set the field??");
     //plugin.setFieldValue(plugin.fieldPath, value);
   }, [data]);
