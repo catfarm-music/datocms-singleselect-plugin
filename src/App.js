@@ -4,16 +4,15 @@ import { ThemeProvider } from "styled-components";
 
 import Select from 'react-select'
 
-/*
+
 const getInitialState = (plugin) => {
   try {
     const value = plugin.getFieldValue(plugin.fieldPath) || "";
     return JSON.parse(value);
   } catch {
-    return [];
+    return null;
   }
 };
-*/
 
 /*
 const options = [
@@ -24,7 +23,7 @@ const options = [
 */
 
 export const App = ({plugin}) => {
-  //const [data, setData] = useState(getInitialState(plugin));
+  const [data, setData] = useState(getInitialState(plugin));
   const [data, setData] = useState();
 
   useEffect(() => {
