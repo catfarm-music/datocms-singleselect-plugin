@@ -47,9 +47,9 @@ export const App = ({plugin}) => {
     <ThemeProvider theme={plugin.theme}>
       <Select options={options}>
       </Select>
-      {options.map(option => {
+      {options.map((option) => {
         return (
-          <RowItem />
+          <RowItem {...option} />
         )
       })}
     </ThemeProvider>

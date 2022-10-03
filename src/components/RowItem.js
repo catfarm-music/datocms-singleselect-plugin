@@ -14,6 +14,22 @@ const StyledRowItem = styled.div`
   padding: 1rem;
   border: 1px solid #ccc;
   justify-content: space-between;
+  transition: background 0.15s;
+
+  & > div:first-child {
+    display: flex;
+    flex-direction: column;
+
+    & > span:first-child {
+      color: #111;
+      font-size: 16px;
+    }
+
+    & > span:last-child {
+      color: #ccc;
+      font-size: 14px;
+    }
+  }
 
   & + & {
     border-radius: 0px 0px 8px 8px;
@@ -25,14 +41,14 @@ const StyledRowItem = styled.div`
   }
 `;
 
-export const RowItem = ({ selected, onSelect }) => {
+export const RowItem = ({ selected, onSelect, value, label }) => {
   return (
     <StyledRowItem $selected={selected}>
       <div>
-        <span>Label</span>
-        <span>Value</span>
+        <span>{label}</span>
+        <span>{value}</span>
       </div>
-      {true && <Icon icon="checkmark" />}
+      {selected && <Icon icon="checkmark" />}
     </StyledRowItem>
   )
 };
