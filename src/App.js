@@ -2,11 +2,7 @@ import { useEffect, useState } from "react";
 
 import { ThemeProvider } from "styled-components";
 
-import InputLabel from '@material-ui/core/InputLabel';
-import MenuItem from '@material-ui/core/MenuItem';
-import FormHelperText from '@material-ui/core/FormHelperText';
-import FormControl from '@material-ui/core/FormControl';
-import Select from '@material-ui/core/Select';
+import Select from 'react-select'
 
 const getInitialState = (plugin) => {
   try {
@@ -16,6 +12,12 @@ const getInitialState = (plugin) => {
     return [];
   }
 };
+
+const options = [
+  { value: 'chocolate', label: 'Chocolate' },
+  { value: 'strawberry', label: 'Strawberry' },
+  { value: 'vanilla', label: 'Vanilla' }
+]
 
 export const App = ({plugin}) => {
   const [data, setData] = useState(getInitialState(plugin));
@@ -34,22 +36,8 @@ export const App = ({plugin}) => {
 
   return (
     <ThemeProvider theme={plugin.theme}>
-      <FormControl variant="outlined">
-        <Select
-          labelId="demo-simple-select-outlined-label"
-          id="demo-simple-select-outlined"
-          value={value}
-          onChange={handleChange}
-          label="Age"
-        >
-          <MenuItem value="">
-            <em>None</em>
-          </MenuItem>
-          <MenuItem value={10}>Ten</MenuItem>
-          <MenuItem value={20}>Twenty</MenuItem>
-          <MenuItem value={30}>Thirty</MenuItem>
-        </Select>
-      </FormControl>
+      <Select options={options}>
+      </Select>
     </ThemeProvider>
   )
 }
