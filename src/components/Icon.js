@@ -8,7 +8,7 @@ const StyledImg = styled.img`
   transition: filter 200ms;
   width: ${prop("size")}px;
   height: ${prop("size")}px;
-  
+
   ${prop("filter")};
 
   transition: 200ms transform;
@@ -31,7 +31,7 @@ export const Icon = ({ icon, ...props }) => {
 
   const filter = getFilters("#2AC24B")
 
-  return src ? <StyledImg src={src} alt={icon} {...props} /> : <StyledSkeleton {...props} />;
+  return src ? <StyledImg src={src} alt={icon} filter={filter} {...props} /> : <StyledSkeleton {...props} />;
 };
 
 Icon.defaultProps = {
