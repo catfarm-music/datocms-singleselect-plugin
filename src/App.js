@@ -29,10 +29,6 @@ export const App = ({plugin}) => {
     plugin.setFieldValue(plugin.fieldPath, value);
   }, [data]);
 
-  const value = "data.value"
-
-  const handleChange = () => {}
-
   console.log("plugin", plugin);
 
   const {options} = JSON.parse(plugin.parameters.instance.options)
