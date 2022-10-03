@@ -8,17 +8,22 @@ const getInitialState = (plugin) => {
     const value = plugin.getFieldValue(plugin.fieldPath);
     return JSON.parse(value);
   } catch {
+    console.log("failed to parse");
     return undefined;
   }
 };
 
 export const App = ({plugin}) => {
   const [data, setData] = useState(getInitialState(plugin));
-  //const [data, setData] = useState();
 
   console.log("data", data, plugin.getFieldValue(plugin.fieldPath));
 
+  console.log("hej1", plugin.getFieldValue(plugin.fieldPath));
+
   useEffect(() => {
+
+    console.log("hej2", plugin.getFieldValue(plugin.fieldPath));
+
     const value = plugin.getFieldValue(plugin.fieldPath)
     const stringData = JSON.stringify(data);
 
