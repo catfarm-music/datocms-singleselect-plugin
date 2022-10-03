@@ -4,6 +4,7 @@ import { ThemeProvider } from "styled-components";
 
 import Select from 'react-select'
 
+/*
 const getInitialState = (plugin) => {
   try {
     const value = plugin.getFieldValue(plugin.fieldPath) || "";
@@ -12,6 +13,7 @@ const getInitialState = (plugin) => {
     return [];
   }
 };
+*/
 
 const options = [
   { value: 'chocolate', label: 'Chocolate' },
@@ -20,7 +22,8 @@ const options = [
 ]
 
 export const App = ({plugin}) => {
-  const [data, setData] = useState(getInitialState(plugin));
+  //const [data, setData] = useState(getInitialState(plugin));
+  const [data, setData] = useState();
 
   useEffect(() => {
     const value = JSON.stringify(data);
@@ -33,6 +36,8 @@ export const App = ({plugin}) => {
   const value = data.value
 
   const handleChange = () => {}
+
+  console.log("plugin", plugin);
 
   return (
     <ThemeProvider theme={plugin.theme}>
