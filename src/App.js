@@ -15,7 +15,7 @@ const getInitialState = (plugin) => {
 
 export const App = ({plugin}) => {
   const [data, setData] = useState(getInitialState(plugin));
-  
+
   useEffect(() => {
     const value = JSON.stringify(data);
 
@@ -35,8 +35,9 @@ export const App = ({plugin}) => {
   return (
     <ThemeProvider theme={plugin.theme}>
       {options.map((option) => {
+        const selected = data && data.value === option.value
         return (
-          <RowItem {...option} onSelect={handleSelect(option)} selected={data.value === option.value} />
+          <RowItem {...option} onSelect={handleSelect(option)} selected={selected} />
         )
       })}
     </ThemeProvider>
