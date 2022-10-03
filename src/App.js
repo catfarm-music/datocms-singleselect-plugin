@@ -2,6 +2,12 @@ import { useEffect, useState } from "react";
 
 import { ThemeProvider } from "styled-components";
 
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+import FormHelperText from '@material-ui/core/FormHelperText';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
+
 const getInitialState = (plugin) => {
   try {
     const value = plugin.getFieldValue(plugin.fieldPath) || "";
@@ -22,9 +28,28 @@ export const App = ({plugin}) => {
     plugin.setFieldValue(plugin.fieldPath, value);
   }, [data]);
 
+  const value = data.value
+
+  const handleChange = () => {}
+
   return (
     <ThemeProvider theme={plugin.theme}>
-
+      <FormControl variant="outlined">
+        <Select
+          labelId="demo-simple-select-outlined-label"
+          id="demo-simple-select-outlined"
+          value={value}
+          onChange={handleChange}
+          label="Age"
+        >
+          <MenuItem value="">
+            <em>None</em>
+          </MenuItem>
+          <MenuItem value={10}>Ten</MenuItem>
+          <MenuItem value={20}>Twenty</MenuItem>
+          <MenuItem value={30}>Thirty</MenuItem>
+        </Select>
+      </FormControl>
     </ThemeProvider>
   )
 }
