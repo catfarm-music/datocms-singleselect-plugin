@@ -11,7 +11,7 @@ const getInitialState = (plugin) => {
   }
 };
 
-export const App = () => {
+export const App = ({plugin}) => {
   const [data, setData] = useState(getInitialState(plugin));
 
   useEffect(() => {
