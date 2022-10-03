@@ -22,6 +22,8 @@ export const App = ({plugin}) => {
     const value = plugin.getFieldValue(plugin.fieldPath)
     const stringData = JSON.stringify(data);
 
+    console.log(value, stringData, data);
+
     // The value is the same as before, do nothing
     if (value === stringData || value === data) return;
     plugin.setFieldValue(plugin.fieldPath, value);
