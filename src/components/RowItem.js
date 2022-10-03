@@ -1,76 +1,37 @@
 import { useEffect, useState } from "react";
 
 import styled from "styled-components";
-import { theme } from "styled-tools";
+import { theme, ifProp } from "styled-tools";
 import TextareaAutosize from "react-textarea-autosize";
 
 import { Icon } from "components/Icon";
 
 const StyledRowItem = styled.div`
+  border-radius: 8px 8px 0px 0px;
+  background: ${ifProp("$selected", "#efefef", "white")}
   display: flex;
-  align-items: center;
-  gap: 1rem;
-  padding: 1rem 0;
-
-  & > textarea {
-    width: 100%;
-    border: none;
-    outline: none;
-    border-radius: 4px;
-    box-sizing: border-box;
-    padding: 12px;
-    resize: none;
-    background: ${theme("semiTransparentAccentColor")};
-  }
-
-  & > div:last-child {
-    display: flex;
-    gap: 1rem;
-  }
+  align-items-center;
+  padding: 1rem;
+  border: 1px solid #ccc;
+  justift-content: space-between;
 
   & + & {
-    border-top: 1px solid ${theme("lightColor")};
+    border-radius: 0px 0px 8px 8px;
   }
-`;
-
-const StyledIconButton = styled.div`
-  border-radius: 50%;
-  width: 32px;
-  height: 32px;
-  background: ${theme("lightColor")};
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: opacity 0.2s;
-  user-select: none;
 
   :hover {
-    opacity: 0.8;
+    background: #efefef;
   }
 `;
 
-export const RowItem = ({ value: defaultValue, onUpdateRow, onRemoveRow, onMoveRow }) => {
-  const handleChange = (event) => {
-    const value = event.target.value;
-    if (value === defaultValue) return;
-    onUpdateRow(value);
-  };
-
+export const RowItem = ({ selected, onSelect }) => {
   return (
-    <StyledRowItem>
-      <TextareaAutosize defaultValue={defaultValue} onChange={handleChange} />
+    <StyledRowItem $selected={selected}>
       <div>
-        <StyledIconButton onClick={onMoveRow(-1)}>
-          <Icon icon="chevron--up" size={24} />
-        </StyledIconButton>
-        <StyledIconButton onClick={onMoveRow(1)}>
-          <Icon icon="chevron--down" size={24} />
-        </StyledIconButton>
-        <StyledIconButton onClick={onRemoveRow}>
-          <Icon icon="trash-can" size={24} />
-        </StyledIconButton>
+        <span>Label</span>
+        <span>Value</span>
       </div>
+      {true && <Icon icon="checkmark" />}
     </StyledRowItem>
-  );
+  )
 };

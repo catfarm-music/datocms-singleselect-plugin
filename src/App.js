@@ -4,6 +4,7 @@ import { ThemeProvider } from "styled-components";
 
 import Select from 'react-select'
 
+import { RowItem } from "components/RowItem";
 
 const getInitialState = (plugin) => {
   try {
@@ -46,6 +47,11 @@ export const App = ({plugin}) => {
     <ThemeProvider theme={plugin.theme}>
       <Select options={options}>
       </Select>
+      {options.map(option => {
+        return (
+          <RowItem />
+        )
+      })}
     </ThemeProvider>
   )
 }
