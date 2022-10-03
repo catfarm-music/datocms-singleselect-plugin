@@ -32,7 +32,7 @@ export const App = ({plugin}) => {
     // The value is the same as before, do nothing
     if (value === stringData || value === data) return;
     console.log("Do we set the field??");
-    plugin.setFieldValue(plugin.fieldPath, value);
+    //plugin.setFieldValue(plugin.fieldPath, value);
   }, [data]);
 
   console.log("plugin", plugin);
