@@ -17,6 +17,7 @@ const StyledRowItem = styled.div`
 
   & + & {
     border-radius: 0px 0px 8px 8px;
+    border-top: none;
   }
 
   :hover {

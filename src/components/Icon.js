@@ -2,10 +2,14 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { prop } from "styled-tools";
 
+import { getFilters } from "utils/hexToCssFilter";
+
 const StyledImg = styled.img`
   transition: filter 200ms;
   width: ${prop("size")}px;
   height: ${prop("size")}px;
+  
+  ${prop("filter")};
 
   transition: 200ms transform;
 `;
@@ -24,6 +28,8 @@ export const Icon = ({ icon, ...props }) => {
       setSrc(result.default);
     });
   }, [icon]);
+
+  const filter = getFilters("#2AC24B")
 
   return src ? <StyledImg src={src} alt={icon} {...props} /> : <StyledSkeleton {...props} />;
 };
