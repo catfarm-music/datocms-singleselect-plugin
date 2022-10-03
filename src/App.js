@@ -2,6 +2,35 @@ import { useEffect, useState } from "react";
 
 import { ThemeProvider } from "styled-components";
 
+const getInitialState = (plugin) => {
+  try {
+    const value = plugin.getFieldValue(plugin.fieldPath) || "";
+    return JSON.parse(value);
+  } catch {
+    return [];
+  }
+};
+
+export const App = () => {
+  const [data, setData] = useState(getInitialState(plugin));
+
+  useEffect(() => {
+    const value = JSON.stringify(data);
+
+    // The value is the same as before, do nothing
+    if (value === plugin.getFieldValue(plugin.fieldPath)) return;
+    plugin.setFieldValue(plugin.fieldPath, value);
+  }, [data]);
+
+  return (
+    <ThemeProvider theme={plugin.theme}>
+
+    </ThemeProvider>
+  )
+}
+
+/*
+
 import { AddRowButton } from "components/AddRowButton";
 import { RowItem } from "components/RowItem";
 
@@ -74,3 +103,4 @@ export const App = ({ plugin }) => {
     </ThemeProvider>
   );
 };
+*/
