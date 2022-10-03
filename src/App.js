@@ -19,7 +19,7 @@ export const App = ({plugin}) => {
   const [data, setData] = useState(getInitialState(plugin));
   //const [data, setData] = useState();
 
-  console.log("data", data);
+  console.log("data", data, plugin.getFieldValue(plugin.fieldPath));
 
   useEffect(() => {
     const value = JSON.stringify(data);
