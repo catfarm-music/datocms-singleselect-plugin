@@ -26,7 +26,7 @@ const StyledRowItem = styled.div`
     }
 
     & > span:last-child {
-      color: #ccc;
+      color: #454545;
       font-size: 14px;
     }
   }
