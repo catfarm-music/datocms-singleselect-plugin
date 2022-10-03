@@ -43,7 +43,7 @@ const StyledRowItem = styled.div`
 
 export const RowItem = ({ selected, onSelect, value, label }) => {
   return (
-    <StyledRowItem $selected={selected}>
+    <StyledRowItem $selected={selected} onClick={onSelect}>
       <div>
         <span>{label}</span>
         <span>{value}</span>
