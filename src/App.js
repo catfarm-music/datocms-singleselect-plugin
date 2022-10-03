@@ -15,11 +15,13 @@ const getInitialState = (plugin) => {
 };
 */
 
+/*
 const options = [
   { value: 'chocolate', label: 'Chocolate' },
   { value: 'strawberry', label: 'Strawberry' },
   { value: 'vanilla', label: 'Vanilla' }
 ]
+*/
 
 export const App = ({plugin}) => {
   //const [data, setData] = useState(getInitialState(plugin));
@@ -38,6 +40,8 @@ export const App = ({plugin}) => {
   const handleChange = () => {}
 
   console.log("plugin", plugin);
+
+  const {options} = JSON.parse(plugin.parameters.instance.options)
 
   return (
     <ThemeProvider theme={plugin.theme}>
