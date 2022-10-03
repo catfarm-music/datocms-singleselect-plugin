@@ -33,7 +33,7 @@ export const App = ({plugin}) => {
     plugin.setFieldValue(plugin.fieldPath, value);
   }, [data]);
 
-  const value = data.value
+  const value = "data.value"
 
   const handleChange = () => {}
 
