@@ -10,7 +10,7 @@ const StyledRowItem = styled.div`
   border-radius: 8px 8px 0px 0px;
   background: ${ifProp("$selected", "#efefef", "white")};
   display: flex;
-  align-items-center;
+  align-items: center;
   padding: 1rem;
   border: 1px solid #ccc;
   justify-content: space-between;
@@ -48,7 +48,7 @@ export const RowItem = ({ selected, onSelect, value, label }) => {
         <span>{label}</span>
         <span>{value}</span>
       </div>
-      {selected && <Icon icon="checkmark" />}
+      {selected && <Icon icon="checkmark" size={28} />}
     </StyledRowItem>
   )
 };
