@@ -25,7 +25,7 @@ const options = [
 
 export const App = ({plugin}) => {
   const [data, setData] = useState(getInitialState(plugin));
-  const [data, setData] = useState();
+  //const [data, setData] = useState();
 
   useEffect(() => {
     const value = JSON.stringify(data);
