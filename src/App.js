@@ -15,18 +15,13 @@ const getInitialState = (plugin) => {
 
 export const App = ({plugin}) => {
   const [data, setData] = useState(getInitialState(plugin));
-
-  console.log("data", data, plugin.getFieldValue(plugin.fieldPath));
-
-  console.log("hej1", plugin.getFieldValue(plugin.fieldPath));
-
+  
   useEffect(() => {
     const value = JSON.stringify(data);
 
     // The value is the same as before, do nothing
     if (value === JSON.stringify(getInitialState(plugin))) return;
-    console.log("Do we set the field??");
-    //plugin.setFieldValue(plugin.fieldPath, value);
+    plugin.setFieldValue(plugin.fieldPath, value);
   }, [data]);
 
   console.log("plugin", plugin);
@@ -41,7 +36,7 @@ export const App = ({plugin}) => {
     <ThemeProvider theme={plugin.theme}>
       {options.map((option) => {
         return (
-          <RowItem {...option} onSelect={handleSelect(option)} />
+          <RowItem {...option} onSelect={handleSelect(option)} selected={data.value === option.value} />
         )
       })}
     </ThemeProvider>
