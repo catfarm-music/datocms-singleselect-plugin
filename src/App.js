@@ -5,10 +5,10 @@ import { RowItem } from "components/RowItem";
 
 const getInitialState = (plugin) => {
   try {
-    const value = plugin.getFieldValue(plugin.fieldPath) || "";
+    const value = plugin.getFieldValue(plugin.fieldPath);
     return JSON.parse(value);
   } catch {
-    return null;
+    return undefined;
   }
 };
 
